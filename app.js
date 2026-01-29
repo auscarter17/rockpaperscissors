@@ -34,6 +34,7 @@ function gameDraw() {
 }
 
 function playRound() {
+
   getPlayerChoice()
   console.log(playerChoice)
   getComputerChoice()
@@ -66,4 +67,17 @@ function playRound() {
   }
 }
 
-playRound()
+function playGame() {
+  for (let i = 0; i < 5; i++) {
+    playRound()
+  }
+  if (playerScore > computerScore) {
+    console.log("YOU WIN THE GAME!")
+  } else if (playerScore < computerScore) {
+    console.log("COMPUTER WINS THE GAME!")
+  } else {
+    console.log("THE GAME IS A TIE!")
+  }
+}
+
+playGame()
