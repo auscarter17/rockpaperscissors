@@ -41,6 +41,18 @@ function gameDraw() {
   displayScore()
 }
 
+function showResults() {
+  let winner
+  let winnerP = document.createElement('p')
+  if (playerScore > computerScore) {
+    winner = "Player"
+  } else {
+    winner = "Computer"
+  }
+  winnerP.textContent = `${winner} wins!`
+  resultsContainer.appendChild(winnerP)
+}
+
 function playRound() {
   console.log(playerChoice)
   getComputerChoice()
@@ -75,6 +87,13 @@ function playRound() {
   let p = document.createElement("p")
   p.textContent = `Player: ${playerScore} | Computer: ${computerScore}`
   resultsContainer.appendChild(p)
+
+  if (playerScore >= 5 || computerScore >= 5) {
+    buttons.forEach(button => {
+      button.disabled = true
+    })
+    showResults()
+  }
 }
 
 // function playGame() {
