@@ -3,7 +3,7 @@ let computerChoice
 let playerChoice
 let playerScore = 0
 let computerScore = 0
-let resultsContainer = document.querySelector("#results-container")
+let resultsContainer = document.querySelector(".results-container")
 let buttons = document.querySelectorAll("button")
 
 function getComputerChoice() {
@@ -45,6 +45,7 @@ function playRound() {
   console.log(playerChoice)
   getComputerChoice()
   console.log(computerChoice)
+  resultsContainer.innerHTML = ''
 
   if (playerChoice === "rock") {
     if (computerChoice === "rock") {
@@ -71,6 +72,9 @@ function playRound() {
       gameDraw()
     }
   }
+  let p = document.createElement("p")
+  p.textContent = `Player: ${playerScore} | Computer: ${computerScore}`
+  resultsContainer.appendChild(p)
 }
 
 // function playGame() {
