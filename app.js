@@ -3,14 +3,22 @@ let computerChoice
 let playerChoice
 let playerScore = 0
 let computerScore = 0
+let resultsContainer = document.querySelector("#results-container")
+let buttons = document.querySelectorAll("button")
 
 function getComputerChoice() {
   computerChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)]
 }
 
-function getPlayerChoice() {
-  playerChoice = prompt("Type rock, paper, or scissors").toLowerCase()
-}
+
+buttons.forEach(button => {
+  button.addEventListener('click', function(event) {
+      const buttonId = event.target.id;
+      playerChoice = buttonId
+      playRound()
+  });
+});
+
 
 function displayScore() {
   console.log(`"SCORE: Player: ${playerScore} | CPU: ${computerScore}"`)
@@ -34,8 +42,6 @@ function gameDraw() {
 }
 
 function playRound() {
-
-  getPlayerChoice()
   console.log(playerChoice)
   getComputerChoice()
   console.log(computerChoice)
@@ -67,17 +73,17 @@ function playRound() {
   }
 }
 
-function playGame() {
-  for (let i = 0; i < 5; i++) {
-    playRound()
-  }
-  if (playerScore > computerScore) {
-    console.log("YOU WIN THE GAME!")
-  } else if (playerScore < computerScore) {
-    console.log("COMPUTER WINS THE GAME!")
-  } else {
-    console.log("THE GAME IS A TIE!")
-  }
-}
+// function playGame() {
+//   for (let i = 0; i < 5; i++) {
+//     playRound()
+//   }
+//   if (playerScore > computerScore) {
+//     console.log("YOU WIN THE GAME!")
+//   } else if (playerScore < computerScore) {
+//     console.log("COMPUTER WINS THE GAME!")
+//   } else {
+//     console.log("THE GAME IS A TIE!")
+//   }
+// }
 
-playGame()
+// playGame()
